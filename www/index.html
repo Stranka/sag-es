@@ -41,11 +41,25 @@
     <div data-role="page" id="home">
       <div data-role="header" data-position="fixed" id="partial_header">
         <img border="0" src="img/logo.png" height="50px" style="float:left;display:inline"/>
-        <h1>Sag-es Olbendorf</h1>       
+        <h1>Sag-es Olbendorf</h1>
       </div>
       <div data-role="main" class="ui-content">
-      </br></br></br>
-        <h1 style="text-align: center">Loading....</h1>
+        <div class="api-div" id="api-geolocation">
+        <h2>Geolocation</h2>
+        <blockquote>
+            <p>The <code>geolocation</code> object provides access to the device's GPS sensor.</p>
+        </blockquote>
+        <h4 class="help"><b>Toggle</b> to stop/start
+        geolocation watch. <br/><b>Get Current</b> for one-time geolocation reading.</h4>
+        <div class="ui-grid-a">
+          <div class="ui-block-a"><div data-role="button" onclick="toggleWatchPosition();">Toggle</div></div>
+          <div class="ui-block-b"><div data-role="button" onclick="getCurrentPosition();">Get Current</div></div>
+        </div>
+          <div id="cur_position"></div>
+          <iframe  id="map" width="600" height="450" frameborder="0" style="border:0"
+            src= "https://www.google.com/maps/embed/v1/place?q=<%= @report.location %>&key=AIzaSyDF-RIpJ-bpfZVtmnkuaN5IoWlzby3Waic" allowfullscreen>
+          </iframe>
+</div>
       </div>
     </div>
 	<script type="text/javascript" src="cordova.js"></script>
