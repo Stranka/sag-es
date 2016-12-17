@@ -16,34 +16,47 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
+    // Wait for Cordova to load
     //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
+    window.location = "http://192.168.2.101:3000/";
+//    window.location.href="http://www.sv-olbendorf.at/mobiles";
+//    document.addEventListener("deviceready", onDeviceReady, false);
+//    document.addEventListener("offline", onOffline, false);
+//    document.addEventListener("online", onOnline, false);
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+    function onDeviceReady() {
+        checkConnection();
+     }
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+    function checkConnection() {
+      var networkState = navigator.connection.type;
+      var states = {};
+      states[Connection.UNKNOWN]    = 'Unknown connection';
+      states[Connection.ETHERNET]    = 'Ethernet connection';
+      states[Connection.WIFI]       = 'WiFi connection';
+      states[Connection.CELL_2G]    = 'Cell 2G connection';
+      states[Connection.CELL_3G]    = 'Cell 3G connection';
+      states[Connection.CELL_4G]    = 'Cell 4G connection';
+      states[Connection.NONE]       = 'No network connection';
 
-        console.log('Received Event: ' + id);
+      if (networkState == Connection.NONE) {
+        navigator.notification.alert(
+          'Keine Internetverbindung',  // message
+          alertDismissed,         // callback
+          'Verbindung',            // title
+          'Done'                  // buttonName
+        );
+
+        //window.location="local/index.html";
+      } else {
+        window.open('http://www.sv-olbendorf.at/mobiles', '_self', 'location=no');
+//        window.location.href="http://www.sv-olbendorf.at/mobiles";
+      }
     }
-};
+
+function alertDismissed() {
+  $(document.getElementById("loading")).hide();
+  $(document.getElementById("no_connection")).show();
+
+}
