@@ -35,7 +35,9 @@
     <plugin name="org.apache.cordova.dialogs" spec="0.2.10" />
     <plugin name="org.apache.cordova.geolocation" spec="2.4.1" />
     <plugin name="org.apache.cordova.network-information" spec="0.2.12" />
+    <plugin name="Notification" value="org.apache.cordova.Notification"/>
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <icon src="icon_localhost.png" />
 
     <access origin="*" />
@@ -52,7 +54,7 @@
     <allow-navigation href="http://www.sag-es.mittenin.at/*" />
     <allow-navigation href="http://192.168.2.101:3000/*" />
     <allow-navigation href="https://www.sag-es.mittenin.at/*" />
-    <allow-navigation href="https://192.168.2.101:3000/*" />    
+    <allow-navigation href="https://192.168.2.101:3000/*" />
     <platform name="android">
       <access origin="*" />
       <access origin="sms:*" launch-external="yes" />
