@@ -26,7 +26,7 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="android-installLocation" value="auto" />
-    <preference name="phonegap-version" value="cli-6.3.0" />
+    <preference name="phonegap-version" value="cli-6.5.0" />
 <!--    <preference name="BackgroundColor" value="0xFFE4E4E4" /> -->
 
     <plugin name="cordova-plugin-camera" spec="2.3.0" />
@@ -37,7 +37,6 @@
     <plugin name="org.apache.cordova.network-information" spec="0.2.12" />
     <plugin name="org.apache.cordova.Notification"/>
 
-    <uses-permission android:name="android.permission.VIBRATE" />
     <icon src="icon_localhost.png" />
 
     <access origin="*" />
